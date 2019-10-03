@@ -1,0 +1,67 @@
+<form >
+        <h1 >LOGIN PAGE</h1>
+        <div class="main">
+            <label for="uname"> username:</label>
+        <input type="text" placeholder="username" 
+        ngModel
+         name="uname"
+          required
+          #user="ngModel"
+        maxlength="10"
+        minlength="3"  
+        >
+        <div *ngIf="user.touched && ! user.valid">
+        <div *ngIf="user.errors.required">
+              username is required
+        </div>
+        <div *ngIf="user.errors.minlength" > 
+            minlength is required
+            {{user.error.minlength.requiredLength}}
+        </div>
+         
+        </div>
+        
+        <label for="psw"> password:</label>
+        
+        <input type="password" placeholder="password" 
+        ngModel
+        #pass="ngModel" 
+        name="psw" 
+        minlength="3"
+        maxlength="10" 
+        required>
+
+        <div *ngIf="pass.touched && ! pass.valid">
+            <div *ngIf="pass.errors.required">
+                password is required
+            </div>
+            <div *ngIf="pass.errors.minlength">
+                minlength is required
+             {{pass.error.minlength.requiredLength}}
+
+            </div>
+
+        </div>
+        
+        <label>
+            <input type="checkbox"  >
+            Remember me
+        </label>
+        
+        <div class="cen">
+        <button  type="submit" >Login</button>
+        </div>
+        <div class="side">
+            <div class="cc2">
+             <a  routerLink="" >register now </a></div>
+             <div class="cc1">
+            <a  href="forget psw">forget password?</a>
+        </div>
+        
+        </div>
+        </div>
+</form>        
+        
+        
+        
+        

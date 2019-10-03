@@ -1,0 +1,50 @@
+<form  [formGroup]="myGroup" (ngSubmit)="handleSubmit()"  >
+ <h2 >sign-upform</h2>
+
+<div class="main" >
+  <div formGroupName="info" >
+    <label for="firstname"  >firstname:</label>
+    <input  type="text" formcontrolName="firstname" placeholder="firstname" >
+  </div>
+  
+  <div >
+    <label for="lastname"  >lastname:</label>
+    <input type="text"  formcontrolName="lastname" placeholder="lastname" >
+  </div>
+   
+  <div formGroupName="info" >
+    <label for="email"  >E-mail:</label>
+    <input type="email" formcontrolName="email" placeholder="Enter E-mail" >
+  </div>
+  
+  <label for="password"  >Password:</label>
+  <input type="text" formControlName="password" maxlength="10" placeholder="Enter Password">
+
+  <div *ngIf="myGroup.controls.password.touched && myGroup.controls.password.invalid">
+    <div *ngIf="myGroup.controls['password'].errors?.required">
+      password is required
+    </div>
+
+    <div *ngIf="myGroup.controls['password'].hasError('minlength')">
+      minlegth is required
+    </div>
+    <div *ngIf="myGroup.controls['password'].hasError('maxlength')">
+      maxlegth is required
+    </div>
+  </div>
+
+    <label for="cpassword"  >cpassword:</label>
+    <input type="text" formControlName="cpassword" maxlength="10" placeholder="Enter the above password " >
+    <div *ngIf="myGroup.touched && myGroup.errors?.mismatch">
+    Password and confirm password mismatch
+    </div>
+  <label>
+    <input type="checkbox"  name="remember" > Remember me</label>
+  <p>already u have account <a routerLink='/login'> login </a></p>
+  <p>By creating an account you agree to our <a href="#" >Terms & Privacy</a>.</p>
+  <div class="">
+    <button class="">cancel</button>
+    <button (click)="handleClick()">signup</button>
+  </div>
+</div>  
+</form>
